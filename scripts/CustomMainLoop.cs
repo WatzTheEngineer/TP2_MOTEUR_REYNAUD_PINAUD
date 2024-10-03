@@ -26,4 +26,9 @@ public partial class CustomMainLoop : SceneTree
 		// SIGNATURE A CHANGER - DOIT RETOURNER LE SINGLETON LEVEL MANAGER
 		return null;
 	}
+	
+	public override void _Finalize(){
+		base._Finalize();
+		SaveManager.GetInstance().SaveGame("save.json");
+	}
 }
