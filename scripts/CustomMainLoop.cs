@@ -29,6 +29,5 @@ public partial class CustomMainLoop : SceneTree
 	
 	public override void _Finalize(){
 		base._Finalize();
-		SaveManager.GetInstance().SaveGame("save.json");
 	}
 }
