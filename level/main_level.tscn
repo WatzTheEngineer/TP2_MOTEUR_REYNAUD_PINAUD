@@ -200,15 +200,15 @@ shape = SubResource("RectangleShape2D_c728i")
 position = Vector2(1070, 309)
 shape = SubResource("RectangleShape2D_m74bf")
 
-[node name="CharBody" type="CharacterBody2D" parent="."]
+[node name="CharBody" type="CharacterBody2D" parent="." groups=["SaveMark"]]
 position = Vector2(600, 340)
 script = ExtResource("2_8tjc3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharBody" groups=["SaveMark"]]
 position = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_w8nr0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharBody"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharBody" groups=["SaveMark"]]
 position = Vector2(4.00001, 4.00002)
 scale = Vector2(1.87097, 1.80645)
 sprite_frames = SubResource("SpriteFrames_oc13h")
