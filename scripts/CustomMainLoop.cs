@@ -10,7 +10,6 @@ public partial class CustomMainLoop : SceneTree
 	{
 		base._Initialize();
 		instance = this;
-		GetSaveManager().LoadGame("save.json");
 	}
 	
 	public static CustomMainLoop Get()
