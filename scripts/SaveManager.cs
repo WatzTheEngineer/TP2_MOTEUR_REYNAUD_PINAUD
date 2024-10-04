@@ -9,6 +9,7 @@ public partial class SaveManager : Node
 		
 	}
 	
+	
 	public static SaveManager GetInstance() {
 		if (instance == null){
 			instance = new SaveManager();
@@ -16,14 +17,13 @@ public partial class SaveManager : Node
 		return instance;
 	}
 	
+	
 	public void LoadGame(string filename){
 		if (!FileAccess.FileExists("user://"+filename))
 		{
 			return;
 		}
-		
 		using var saveFile = FileAccess.Open("user://"+filename, FileAccess.ModeFlags.Read);
-
 		while (saveFile.GetPosition() < saveFile.GetLength())
 		{
 			var jsonString = saveFile.GetLine();
@@ -50,11 +50,10 @@ public partial class SaveManager : Node
 		}
 	}
 	
+	
 	public void SaveGame(string filename){
-		
 		using var saveFile = FileAccess.Open("user://"+filename, FileAccess.ModeFlags.Write);
-		
-		var saveNodes = GetTree().GetNodesInGroup("SaveMark");
+		Godot.Collections.Array<Node> saveNodes = CustomMainLoop.Get().GetNodesInGroup("SaveMark");
 		foreach (Node saveNode in saveNodes)
 		{
 			if (string.IsNullOrEmpty(saveNode.SceneFilePath))
@@ -71,6 +70,7 @@ public partial class SaveManager : Node
 		var jsonString = Json.Stringify(nodeData);
 		saveFile.StoreLine(jsonString);
 		}
-		
 	}
+	
+	
 }

@@ -10,6 +10,7 @@ public partial class CustomMainLoop : SceneTree
 	{
 		base._Initialize();
 		instance = this;
+		GetSaveManager().LoadGame("save.json");
 	}
 	
 	public static CustomMainLoop Get()
@@ -23,11 +24,6 @@ public partial class CustomMainLoop : SceneTree
 	}
 	
 	public SaveManager GetSaveManager(){
-		// SIGNATURE A CHANGER - DOIT RETOURNER LE SINGLETON LEVEL MANAGER
-		return null;
-	}
-	
-	public override void _Finalize(){
-		base._Finalize();
+		return SaveManager.GetInstance();
 	}
 }
