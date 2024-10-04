@@ -23,11 +23,6 @@ public partial class CustomMainLoop : SceneTree
 	}
 	
 	public SaveManager GetSaveManager(){
-		// SIGNATURE A CHANGER - DOIT RETOURNER LE SINGLETON LEVEL MANAGER
-		return null;
-	}
-	
-	public override void _Finalize(){
-		base._Finalize();
+		return SaveManager.GetInstance();
 	}
 }
