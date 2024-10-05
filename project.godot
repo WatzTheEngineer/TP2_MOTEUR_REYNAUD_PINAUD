@@ -14,7 +14,7 @@ config/name="TP2_MOTEUR_REYNAUD_PINAUD"
 config/description="Enter an interesting project description here!"
 run/main_scene="res://level/main_level.tscn"
 run/main_loop_type="CustomMainLoop"
-config/features=PackedStringArray("4.2", "C#")
+config/features=PackedStringArray("4.3", "C#")
 config/icon="res://icon.png"
 
 [display]
