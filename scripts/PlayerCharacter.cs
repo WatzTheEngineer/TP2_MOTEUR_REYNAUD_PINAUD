@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayerCharacter : CharacterBody2D
+public partial class PlayerCharacter : CharacterBody2D, ISaveable
 {
 	[Export] public int Speed {get;set;} = 80;
 	private AnimatedSprite2D _animationPlayer;
@@ -44,5 +44,16 @@ public partial class PlayerCharacter : CharacterBody2D
 		{
 			_animationPlayer.Play("idle");
 		}
+	}
+	
+	public Godot.Collections.Dictionary<string, Variant> Save(){
+		return new Godot.Collections.Dictionary<string, Variant>() {
+			{ "PosX", Position.X },
+			{ "PosY", Position.Y }
+		};
+	}
+	
+	public void Load(Godot.Collections.Dictionary<string, Variant> data){
+		this.GlobalPosition = new Vector2((float)data["PosX"],(float)data["PosY"]);
 	}
 }
