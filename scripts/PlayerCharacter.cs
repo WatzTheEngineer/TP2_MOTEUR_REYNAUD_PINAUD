@@ -54,6 +54,6 @@ public partial class PlayerCharacter : CharacterBody2D, ISaveable
 	}
 	
 	public void Load(Godot.Collections.Dictionary<string, Variant> data){
-		
+		this.GlobalPosition = new Vector2((float)data["PosX"],(float)data["PosY"]);
 	}
 }
