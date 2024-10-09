@@ -8,7 +8,7 @@ public partial class SaveManager : Node
 	private SaveManager(){
 		
 	}
-	
+
 	
 	public static SaveManager GetInstance() {
 		if (instance == null){
