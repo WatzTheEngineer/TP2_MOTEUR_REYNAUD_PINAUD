@@ -5,7 +5,8 @@ public partial class PlayerCharacter : CharacterBody2D, ISaveable
 {
 	[Export] public int Speed {get;set;} = 80;
 	private AnimatedSprite2D _animationPlayer;
-
+	private Godot.Collections.Dictionary<string, Variant> playerData;
+	
 	public override void _Ready()
 	{
 		_animationPlayer = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -49,11 +50,23 @@ public partial class PlayerCharacter : CharacterBody2D, ISaveable
 	public Godot.Collections.Dictionary<string, Variant> Save(){
 		return new Godot.Collections.Dictionary<string, Variant>() {
 			{ "PosX", Position.X },
-			{ "PosY", Position.Y }
+			{ "PosY", Position.Y },
+			{ "LevelName", CustomMainLoop.Get().CurrentScene.Name },
 		};
 	}
 	
 	public void Load(Godot.Collections.Dictionary<string, Variant> data){
-		this.GlobalPosition = new Vector2((float)data["PosX"],(float)data["PosY"]);
+		this.playerData = data;
+		CallDeferred(nameof(PlacePlayer));
+	}
+	
+	private void PlacePlayer(){
+		
+		// DO NOT WORK
+		if ((string)this.playerData["LevelName"] == "SecondLevel"){
+			CustomMainLoop.Get().GetLevelManager().LoadLevel("second_level");
+		}
+		
+		this.GlobalPosition = new Vector2((float)this.playerData["PosX"],(float)this.playerData["PosY"]);
 	}
 }
