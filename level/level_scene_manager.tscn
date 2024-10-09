@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://0tutstwcg4fd"]
+[gd_scene load_steps=2 format=3 uid="uid://0tutstwcg4fd"]
 
 [ext_resource type="Script" path="res://scripts/LevelManager.cs" id="1_f6xvl"]
-[ext_resource type="PackedScene" uid="uid://blyehssng1vk" path="res://level/main_level.tscn" id="2_rmblf"]
-[ext_resource type="PackedScene" uid="uid://67breelix854" path="res://level/second_level.tscn" id="3_4qa5k"]
 
 [node name="LevelSceneManager" type="Node2D"]
 script = ExtResource("1_f6xvl")
-editorScenes = Array[PackedScene]([ExtResource("2_rmblf"), ExtResource("3_4qa5k")])
+editorScenes = Array[PackedScene]([])
