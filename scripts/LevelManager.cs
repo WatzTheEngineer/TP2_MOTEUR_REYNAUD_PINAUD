@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class LevelManager : GodotObject
+public partial class LevelManager : Node
 {
 	
 	private static LevelManager instance;
@@ -17,7 +17,10 @@ public partial class LevelManager : GodotObject
 		return instance;
 	}
 	
-	public void Loadlevel(string levelName){
-		return ;
+	public void LoadLevel(string levelName){
+		Godot.PackedScene packed = (Godot.PackedScene) GD.Load("res://level/"+levelName+".tscn");
+		if (packed != null){
+			CustomMainLoop.Get().ChangeSceneToPacked(packed);
+		}
 	}
 }

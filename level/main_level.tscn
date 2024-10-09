@@ -1,9 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://blyehssng1vk"]
+[gd_scene load_steps=32 format=3 uid="uid://blyehssng1vk"]
 
 [ext_resource type="Script" path="res://scripts/MainLevel.cs" id="1_vysl3"]
 [ext_resource type="Texture2D" uid="uid://bakn4hk0oqw3a" path="res://assets/spritesheet.png" id="2_2x004"]
 [ext_resource type="Script" path="res://scripts/PlayerCharacter.cs" id="2_8tjc3"]
 [ext_resource type="TileSet" uid="uid://cyyp5vgruya14" path="res://assets/ground_tiles.tres" id="3_0o75d"]
+[ext_resource type="Script" path="res://scripts/TP.cs" id="3_amyw1"]
+[ext_resource type="Texture2D" uid="uid://fqif4notunm5" path="res://assets/TP.png" id="4_0tscb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7flfg"]
 size = Vector2(1072, 110)
@@ -16,6 +18,8 @@ size = Vector2(92, 585)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m74bf"]
 size = Vector2(164, 478)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75hra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8nr0"]
 size = Vector2(58, 56)
@@ -202,6 +206,18 @@ shape = SubResource("RectangleShape2D_c728i")
 [node name="CollisionRight" type="CollisionShape2D" parent="WorldCollisions"]
 position = Vector2(1070, 309)
 shape = SubResource("RectangleShape2D_m74bf")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(449, 531)
+script = ExtResource("3_amyw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_75hra")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(7.62939e-06, -7.62939e-06)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("4_0tscb")
 
 [node name="CharBody" type="CharacterBody2D" parent="." groups=["SaveMark"]]
 position = Vector2(600, 340)
