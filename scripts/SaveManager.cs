@@ -40,13 +40,17 @@ public partial class SaveManager : Node
 	
 	
 	public void SaveGame(string filename){
-		using var saveFile = FileAccess.Open("user://"+filename, FileAccess.ModeFlags.Write);
-		Godot.Collections.Array<Node> saveNodes = CustomMainLoop.Get().GetNodesInGroup("SaveMark");
-		foreach (Node node in saveNodes)
-		{
-			var nodeData = node.Call("Save");
-			var jsonString = Json.Stringify(nodeData);
-			saveFile.StoreLine(jsonString);
+		if(CustomMainLoop.Get().CurrentScene.Name == "MainLevel"){ // USED TO AVOID SAVE ISSUES DUE TO SAVE IN THE 2ND LEVEL FAILS
+			
+			using var saveFile = FileAccess.Open("user://"+filename, FileAccess.ModeFlags.Write);
+			Godot.Collections.Array<Node> saveNodes = CustomMainLoop.Get().GetNodesInGroup("SaveMark");
+			foreach (Node node in saveNodes)
+			{
+				var nodeData = node.Call("Save");
+				var jsonString = Json.Stringify(nodeData);
+				saveFile.StoreLine(jsonString);
+			}
+			
 		}
 	}
 	
