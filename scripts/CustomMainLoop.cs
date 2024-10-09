@@ -18,8 +18,7 @@ public partial class CustomMainLoop : SceneTree
 	}
 	
 	public LevelManager GetLevelManager(){
-		// SIGNATURE A CHANGER - DOIT RETOURNER LE SINGLETON LEVEL MANAGER
-		return null;
+		return LevelManager.GetInstance();
 	}
 	
 	public SaveManager GetSaveManager(){
